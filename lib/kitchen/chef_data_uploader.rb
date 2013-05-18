@@ -151,7 +151,7 @@ module Kitchen
     end
 
     def cp_cookbooks(tmpdir)
-      FileUtils.cp_r(File.join(kitchen_root, "cookbooks", "."), tmpdir)
+      FileUtils.cp_r(File.join(kitchen_root, "ci_environment", "."), tmpdir)
       cp_this_cookbook(tmpdir) if File.exists?(File.expand_path('metadata.rb'))
     end
 
