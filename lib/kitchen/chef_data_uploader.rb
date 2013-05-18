@@ -125,7 +125,7 @@ module Kitchen
         run_resolver("Berkshelf", "berks", tmpdir)
       elsif File.exists?(File.join(kitchen_root, "Cheffile"))
         run_resolver("Librarian", "librarian-chef", tmpdir)
-      elsif File.directory?(File.join(kitchen_root, "cookbooks"))
+      elsif File.directory?(File.join(kitchen_root, "ci_environment"))
         cp_cookbooks(tmpdir)
       elsif File.exists?(File.join(kitchen_root, "metadata.rb"))
         cp_this_cookbook(tmpdir)
