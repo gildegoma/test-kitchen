@@ -139,9 +139,12 @@ module Kitchen
       end
 
       def run_chef_solo(ssh_args)
+        #
+        # Ugly hack to make chef-solo available in PATH on provision call
+        #
         ssh(ssh_args, <<-RUN_SOLO)
-          sudo chef-solo -c #{chef_home}/solo.rb -j #{chef_home}/dna.json \
-            --log_level #{Util.from_logger_level(logger.level)}
+          sudo -H bash -lc 'chef-solo -c #{chef_home}/solo.rb -j #{chef_home}/dna.json \
+            --log_level #{Util.from_logger_level(logger.level)}'
         RUN_SOLO
       end
 
